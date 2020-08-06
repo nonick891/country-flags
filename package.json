@@ -1,0 +1,24 @@
+{
+  "name": "country-flags",
+  "version": "1.0.0",
+  "description": "Compile css file for coutry flags icons.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nonick891/country-flags.git"
+  },
+  "keywords": [
+    "css",
+    "country",
+    "flags"
+  ],
+  "author": "Nikita Volchok",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nonick891/country-flags/issues"
+  },
+  "homepage": "https://github.com/nonick891/country-flags#readme"
+}
