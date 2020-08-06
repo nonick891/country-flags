@@ -1,3 +1,3 @@
-let converter = require('./src/converter'),
-    countryJson = require('./assets/country-codes.json'),
-    flagsObject = converter.getCountryFlagsContent();
+let countries = require('./src/countries');
+
+countries.getCountriesWithFlags();
