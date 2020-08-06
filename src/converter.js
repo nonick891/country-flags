@@ -1,13 +1,22 @@
-let flagsPath = '../assets/flags',
-  fs = require('fs'),
-  files = fs.readdirSync(flagsPath),
-  content = '';
+let fs = require('fs');
 
-fs.readFile(`${flagsPath}/${files[0]}`, 'utf8', (err, data) => {
-  if (err) throw err;
-  content = data;
-});
+const getFlagsPath = () => './assets/flags';
 
-setTimeout(() => {
-  console.log(content, 'from timeout function');
-}, 200);
+const getFileContent = filePath =>
+  fs.readFileSync(filePath, {encoding: 'utf8', flag:'r'});
+
+const getFiles = folderPath =>
+  fs.readdirSync(folderPath);
+
+const getFlagPath = flagPath =>
+  `${flagsPath}/${flagPath}`;
+
+const getFlags = flagFolder =>
+  getFiles(flagFolder);
+
+module.exports = {
+  getFlags,
+  getFlagPath,
+  getFlagsPath,
+  getFileContent
+};
