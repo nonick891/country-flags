@@ -18,21 +18,30 @@ const getFormattedFlags = flags =>
   flags.map(flag => formatFlagObject(flag));
 
 const formatFlagObject = flag => ({
-  country: flag.split('.')[0].toLowerCase(),
-  content: getFlagContent(flag)
+  [flag.split('.')[0]]: getFlagContent(flag)
 });
+
+const formatFlagsObject = flags => {
+  let result = {};
+  for (let flag of flags) {
+    let keys = Object.keys(flag);
+    result[keys[0]] = flag[keys[0]];
+  }
+  return result;
+};
 
 /**
  *
- * Example of return:
- * [
- *  { country: 'us', content: <svg string> }
+ * @Example return object:
+ * {
+ *  'us': <svg string>,
  *  ...
- * ]
- * return array of objects
+ * }
+ *
+ * @return array of objects
  */
 const getCountryFlagsContent = () =>
-  getFormattedFlags(getFlagsName());
+  formatFlagsObject(getFormattedFlags(getFlagsName()));
 
 module.exports = {
   getCountryFlagsContent
