@@ -1,22 +1,39 @@
-let fs = require('fs');
+let file = require('./file.js');
 
 const getFlagsPath = () => './assets/flags';
 
-const getFileContent = filePath =>
-  fs.readFileSync(filePath, {encoding: 'utf8', flag:'r'});
+const getFlagsName = () =>
+  getFlags(getFlagsPath());
 
-const getFiles = folderPath =>
-  fs.readdirSync(folderPath);
+const getFlagContent = flag =>
+  file.getFileContent(getFlagPath(flag));
 
 const getFlagPath = flagPath =>
-  `${flagsPath}/${flagPath}`;
+  `${getFlagsPath()}/${flagPath}`;
 
 const getFlags = flagFolder =>
-  getFiles(flagFolder);
+  file.getFolderFiles(flagFolder);
+
+const getFormattedFlags = flags =>
+  flags.map(flag => formatFlagObject(flag));
+
+const formatFlagObject = flag => ({
+  country: flag.split('.')[0].toLowerCase(),
+  content: getFlagContent(flag)
+});
+
+/**
+ *
+ * Example of return:
+ * [
+ *  { country: 'us', content: <svg string> }
+ *  ...
+ * ]
+ * return array of objects
+ */
+const getCountryFlagsContent = () =>
+  getFormattedFlags(getFlagsName());
 
 module.exports = {
-  getFlags,
-  getFlagPath,
-  getFlagsPath,
-  getFileContent
+  getCountryFlagsContent
 };
