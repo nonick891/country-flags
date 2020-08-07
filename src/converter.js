@@ -1,4 +1,7 @@
-let file = require('./file.js');
+let {
+  getFileContent,
+  getFolderFiles
+} = require('./file.js');
 
 const getFlagsPath = () => './assets/flags';
 
@@ -6,13 +9,13 @@ const getFlagsName = () =>
   getFlags(getFlagsPath());
 
 const getFlagContent = flag =>
-  file.getFileContent(getFlagPath(flag));
+  getFileContent(getFlagPath(flag));
 
 const getFlagPath = flagPath =>
   `${getFlagsPath()}/${flagPath}`;
 
 const getFlags = flagFolder =>
-  file.getFolderFiles(flagFolder);
+  getFolderFiles(flagFolder);
 
 const getFormattedFlags = flags =>
   flags.map(flag => formatFlagObject(flag));
@@ -21,14 +24,17 @@ const formatFlagObject = flag => ({
   [flag.split('.')[0]]: getFlagContent(flag)
 });
 
-const formatFlagsObject = flags => {
-  let result = {};
-  for (let flag of flags) {
-    let keys = Object.keys(flag);
-    result[keys[0]] = flag[keys[0]];
-  }
+const formatFlagsObject = flags =>
+  flags.reduce(extractFlagFromObject, {});
+
+const extractFlagFromObject = (result, flag) => {
+  result[getObjKey(flag)] = getObjValue(flag);
   return result;
 };
+
+const getObjKey = obj => Object.keys(obj)[0];
+
+const getObjValue = obj => obj[getObjKey(obj)];
 
 /**
  *

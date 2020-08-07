@@ -1,3 +1,5 @@
-let countries = require('./src/countries');
+let buildStyles = require('./src/style.js'),
+    buildTemplate = require('./src/template.js');
 
-countries.getCountriesWithFlags();
+buildStyles();
+buildTemplate();
