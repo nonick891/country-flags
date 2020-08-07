@@ -5,13 +5,14 @@ let countries = require('../assets/country-codes.json'),
     } = require('./file');
 
 const buildTemplate = () =>
-  createFile(
-    './dist/index.html',
-    getFileContent('./assets/index.html').replace('{flags}', getFlagsTemplate())
-  );
+  createFile('./dist/index.html', getTemplate());
+
+const getTemplate = () =>
+  getFileContent('./assets/index.html')
+    .replace('{flags}', getFlagsTemplate());
 
 const getFlagsTemplate = () =>
-  createFlagsTemplate(buildFlagsTemplate());
+  createFlagsTemplate(createFlagsDivs());
 
 const createFlagsTemplate = flags => {
   let middle = '',
@@ -19,20 +20,20 @@ const createFlagsTemplate = flags => {
   for (let index in flags) {
     if (!flags.hasOwnProperty(index)) continue;
     if (index > 0 && index % 9 === 0) {
-      result += getCenterTemplate(middle);
+      result += getCenterDiv(middle);
       middle = '';
     }
     middle += flags[index];
   }
-  result += getCenterTemplate(middle);
+  result += getCenterDiv(middle);
   middle = null;
-  return result;
+  return result.trimLeft('\t\t');
 };
 
-const getCenterTemplate = content =>
+const getCenterDiv = content =>
   `\t\t<div class="center">\n${content}\t\t</div>\n`;
 
-const buildFlagsTemplate = () =>
+const createFlagsDivs = () =>
   countries.map(country => getFlagDiv(country.ccode.toLowerCase()));
 
 const getFlagDiv = code =>

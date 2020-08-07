@@ -10,6 +10,11 @@
       margin: 0;
       padding: 0;
       font-family: Open Sans, sans-serif;
+      font-weight: 300;
+    }
+    .text-center {
+      text-align: center;
+      font-weight: 400;
     }
     .flags-wrapper {
       display: flex;
@@ -28,7 +33,13 @@
 </head>
 <body>
 
-  <h1 style="text-align: center">Flags</h1>
+  <h1 class="text-center">Country code dropdown</h1>
+
+  <div class="flags-wrapper">
+  
+  </div>
+  
+  <h1 class="text-center">Flags</h1>
 
   <div class="flags-wrapper">
     {flags}
