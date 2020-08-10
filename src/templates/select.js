@@ -1,6 +1,6 @@
 let countries = require('../../assets/country-codes.json');
 
-const getDropdownTemplate = () =>
+const getDropDownTemplate = () =>
   buildSelectTemplate(buildOptionsTemplate());
 
 const buildSelectTemplate = content =>
@@ -12,4 +12,4 @@ const buildOptionsTemplate = () =>
 const getOptionTemplate = country =>
   `\t\t\t\t<option value="${country.ccode.toLowerCase()}">${country.name} ${country.mcode}</option>\n`;
 
-module.exports = getDropdownTemplate;
+module.exports = getDropDownTemplate;

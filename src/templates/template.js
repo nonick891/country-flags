@@ -1,4 +1,4 @@
-let getDropdownTemplate = require('./select'),
+let getDropDownTemplate = require('./select'),
     getFlagsTemplate = require('./flags'),
     {
       createFile,
@@ -10,7 +10,7 @@ const buildTemplate = () =>
 
 const getTemplate = () =>
   getFileContent('./assets/index.html')
-    .replace(/{dropdown}/gm, getDropdownTemplate())
+    .replace(/{dropdown}/gm, getDropDownTemplate())
     .replace(/{flags}/gm, getFlagsTemplate());
 
 module.exports = buildTemplate;
