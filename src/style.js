@@ -23,6 +23,6 @@ const getFlagStyle = country =>
   );
 
 const insertIntoBackground = (code, svgBase64) =>
-  `.${code} {background-image: url(data:image/svg+xml;base64,${svgBase64});} `;
+  `.${code}, [data-chosen='${code}'] {background-image: url(data:image/svg+xml;base64,${svgBase64});} `;
 
 module.exports = buildStyles;

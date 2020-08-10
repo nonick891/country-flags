@@ -16,7 +16,7 @@
       text-align: center;
       font-weight: 400;
     }
-    .flags-wrapper {
+    .wrapper {
       display: flex;
       flex-direction: column;
     }
@@ -26,8 +26,29 @@
       justify-content: center;
       width: 100%;
     }
-    .center * {
+    .center > * {
       margin: 10px;
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+    select {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    select, option {
+      text-align-last: end;
+      direction: ltr;
+    }
+    select.country-code {
+      padding-right: .75rem;
+      background-position: .75rem;
+      background-size: 1.625rem 1rem;
+      outline: none;
+      width: 6rem;
+      height: 2.5rem;
+      border: 1.5px solid #D6D9F5;
     }
   </style>
 </head>
@@ -35,13 +56,17 @@
 
   <h1 class="text-center">Country code dropdown</h1>
 
-  <div class="flags-wrapper">
-  
+  <div class="wrapper">
+    <div class="center">
+      
+      {dropdown}
+      
+    </div>
   </div>
   
   <h1 class="text-center">Flags</h1>
 
-  <div class="flags-wrapper">
+  <div class="wrapper">
     {flags}
   </div>
 

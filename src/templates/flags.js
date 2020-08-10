@@ -1,15 +1,4 @@
-let countries = require('../assets/country-codes.json'),
-    {
-      createFile,
-      getFileContent
-    } = require('./file');
-
-const buildTemplate = () =>
-  createFile('./dist/index.html', getTemplate());
-
-const getTemplate = () =>
-  getFileContent('./assets/index.html')
-    .replace('{flags}', getFlagsTemplate());
+let countries = require('../../assets/country-codes.json');
 
 const getFlagsTemplate = () =>
   createFlagsTemplate(createFlagsDivs());
@@ -39,4 +28,4 @@ const createFlagsDivs = () =>
 const getFlagDiv = code =>
   `\t\t\t\t<div class="flag-icon ${code}"></div>\n`;
 
-module.exports = buildTemplate;
+module.exports = getFlagsTemplate;
