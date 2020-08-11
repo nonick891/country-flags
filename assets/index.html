@@ -41,14 +41,26 @@
       text-align-last: end;
       direction: ltr;
     }
-    select.country-code {
+    .country-code {
       padding-right: .75rem;
+      padding-left: calc(1.625rem + 10px);
       background-position: .75rem;
       background-size: 1.625rem 1rem;
+      background-color: #fff;
       outline: none;
       width: 6rem;
       height: 2.5rem;
       border: 1.5px solid #D6D9F5;
+    }
+    .options-wrapper {
+      height: 40vh;
+      overflow: scroll;
+      margin: 2px 9px 13px 0;
+      padding: 0 0 0 10px;
+      position: absolute;
+      background-color: #fff;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+      z-index: 3;
     }
   </style>
 </head>
@@ -56,6 +68,14 @@
 
   <h1 class="text-center">Country code dropdown</h1>
 
+  <div class="wrapper">
+    <div class="center">
+      
+      {select}
+      
+    </div>
+  </div>
+  
   <div class="wrapper">
     <div class="center">
       
