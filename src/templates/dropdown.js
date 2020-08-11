@@ -41,10 +41,11 @@ const getScript = () =>
         button.dataset.chosen = e.target.dataset.code;
         button.innerHTML = e.target.dataset.mcode;
         e.target.closest('.options-wrapper').style.display = 'none';
-      }
-      wrapper.style.display = (wrapper.offsetWidth > 0 && wrapper.offsetHeight > 0)
+      } else {
+        wrapper.style.display = (wrapper.offsetWidth > 0 && wrapper.offsetHeight > 0)
         ? 'none'
         : 'block';
+      }
     });
 </script>`.inlineCode();
 
